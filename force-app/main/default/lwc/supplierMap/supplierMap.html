@@ -1,0 +1,23 @@
+<!--
+  @File Name          : supplierMap.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/30/2020, 6:14:27 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/29/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+  <template if:false={errorMessage}>
+    <lightning-map map-markers={mapMarkers} zoom-level={mapZoomLevel} list-view="visible"
+      onmarkerselect={handleMarkerSelect} selected-marker-value={selectedMarkerValue}>
+    </lightning-map>
+  </template>
+  <template if:true={errorMessage}>
+    <div class="slds-align_absolute-center errorMessage">
+      {errorMessage}
+    </div>
+  </template>
+</template>

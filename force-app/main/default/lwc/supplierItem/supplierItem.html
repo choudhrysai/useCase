@@ -1,0 +1,38 @@
+<!--
+  @File Name          : supplierItem.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/30/2020, 8:29:40 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/29/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+  <div class="supplierItemCard">
+    <button class="slds-coordinates__item-action slds-button_reset slds-media" aria-pressed="false"
+      onclick={supplierSelected}>
+      <span class="slds-media__figure">
+        <span class="slds-icon_container slds-icon-standard-account" title="Description of icon when needed">
+          <lightning-icon icon-name="custom:custom31"></lightning-icon>
+        </span>
+      </span>
+      <span class="slds-media__body">
+        <span class="slds-text-link">
+          &nbsp;<a onclick={openSupplier}>{supplierWrapper.supplier.Name}</a>
+        </span>
+        <div class="slds-grid slds-gutters">
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-p-horizontal_small"> <strong>City : </strong>{supplierWrapper.supplier.City__c}</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-p-horizontal_small"></p> <strong>Distance : </strong><template
+              if:true={supplierWrapper.distance}>{supplierWrapper.distance} kms</template><template
+              if:false={supplierWrapper.distance}>Disatnce data not available</template></p>
+          </div>
+        </div>
+      </span>
+    </button>
+  </div>
+</template>

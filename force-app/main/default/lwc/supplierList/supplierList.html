@@ -1,0 +1,63 @@
+<!--
+  @File Name          : supplierList.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/30/2020, 7:19:57 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/29/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={suppliersMasterList}>
+        <lightning-card>
+            <h3 slot="title">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_1-of-3 supplierTitle">
+                        <lightning-icon icon-name="custom:custom31"></lightning-icon>
+                        &nbsp;Suppliers ({totalSuppliers})
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input type="text" label="Search Supplier" variant="label-hidden" placeholder="Search Supplier..."
+                            onkeyup={searchSupplier}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3 supplierButtons">
+                        <span class="pageDetailsClass">{pageDetails}</span>
+                        <lightning-button-group>
+                            <lightning-button variant="brand" disabled={disablePrevious} label="< Previuos"
+                                onclick={previousPage}>
+                            </lightning-button>
+                            <lightning-button variant="brand" disabled={disableNext} label="Next >" onclick={nextPage}>
+                            </lightning-button>
+                        </lightning-button-group>
+                    </div>
+                </div>
+                <!-- <div class="supplierHearder">
+                    <div class="supplierTitle">
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="supplierButtons">
+
+                    </div>
+                </div> -->
+            </h3>
+            <template for:each={suppliersCurrentList} for:item="item">
+                <div key={item.supplier.Id}>
+                    <c-supplier-item supplier-wrapper={item}></c-supplier-item>
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+    <template if:true={error}>
+        <div class="slds-align_absolute-center errorMessage">
+            {error}
+        </div>
+    </template>
+</template>
