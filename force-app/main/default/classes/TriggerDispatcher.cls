@@ -1,6 +1,4 @@
 /*
- @Author : Biswajeet Samal
- @CreatedDate : 20th Oct 2019
  @Description : Trigger Dispatcher.
  */
 public class TriggerDispatcher{
