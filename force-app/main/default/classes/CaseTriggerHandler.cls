@@ -4,7 +4,7 @@
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              :
  * @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
- * @Last Modified On   : 5/31/2020, 3:01:36 PM
+ * @Last Modified On   : 6/2/2020, 7:58:58 AM
  * @Modification Log   :
  * Ver       Date            Author                  Modification
  * 1.0    5/31/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
@@ -39,17 +39,17 @@ public with sharing class CaseTriggerHandler implements TriggerHandlerInterface{
 		if (runAfterUpdate){
 			runAfterUpdate = false;
 			CaseTriggerHelper helper = new CaseTriggerHelper();
-            Set<Id> accountIdSet = new set<Id>();
-            //Converting the maps from <Id,Sobject> => <Id,Case>
-            Map<Id,Case> caseNewMap=(Map<Id,Case>) newMap;
-            Map<Id,Case> caseOldMap=(Map<Id,Case>) oldMap;
-            //Iterating through the list of cases
-			for (Case cs : (List< Case>)newList){
-                if (cs.Satisfaction_Score__c != null && caseNewMap.get(cs.Id).Satisfaction_Score__c != caseOldMap.get(cs.Id).Satisfaction_Score__c && cs.AccountId != null){
+			Set<Id> accountIdSet = new set<Id>();
+			//Converting the maps from <Id,Sobject> => <Id,Case>
+			Map<Id, Case> caseNewMap = (Map<Id, Case>)newMap;
+			Map<Id, Case> caseOldMap = (Map<Id, Case>)oldMap;
+			//Iterating through the list of cases
+			for (Case cs : (List<Case>)newList){
+				if (caseNewMap.get(cs.Id).Satisfaction_Score__c != caseOldMap.get(cs.Id).Satisfaction_Score__c && cs.AccountId != null){
 					accountIdSet.add(cs.AccountId);
 				}
-            }
-            //CAlling the helper method to check the score and update
+			}
+			//CAlling the helper method to check the score and update
 			if (accountIdSet != null && !accountIdSet.isEmpty()){
 				helper.updateAverageSatisfactionScore(accountIdSet);
 			}
