@@ -73,4 +73,19 @@ public with sharing class CaseTriggerHandler implements TriggerHandlerInterface{
 			runAfterUnDelete = false;
 		}
 	}
+
+	public static void thisMethod()
+	{
+		// this is a dummy method 
+		//line 1
+		//Line 2
+		//Line 3
+		//Line 4
+		//Line 5
+		//Line 6
+		//Line 7
+		//Line 8
+		//Line 9
+		//Line 10
+	}
 }
